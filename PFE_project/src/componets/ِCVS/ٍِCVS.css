@@ -1,0 +1,127 @@
+/* CVS.css */
+.cvs-container {
+    margin-top: 140px;
+    padding: 20px;
+  }
+  
+  .file-drop-area {
+    border: 2px dashed rgb(59, 144, 255); /* لون الحدود */
+    padding: 40px;
+    margin: 20px;
+    border-radius: 15px; /* جعل الحواف أكثر نعومة */
+    background: linear-gradient(135deg, #f0f8f0, #e8f5e9); /* إضافة تدرج لوني للخلفية */
+    cursor: pointer;
+    display: inline-flex; /* لجعل الأيقونة بجانب النص */
+  align-items: center; /* محاذاة عمودية */
+  gap: 90px; /* مسافة بين الأيقونة والنص */
+    transition: all 0.3s ease; /* إضافة تأثير انتقالي عند التفاعل */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* تحسين الظلال */
+    text-align: center; /* محاذاة النصوص */
+  }
+  .file-select-button .icon-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .upload-icon {
+    width: 40px; 
+    padding-right: 20px;
+    margin-top: -90px;
+    height: 40px;/* حجم الأيقونة */
+    color: rgb(59, 144, 255); /* لون الأيقونة */
+  }
+
+  .file-select-button:hover .upload-icon {
+    color: #ffffff; /* تغيير لون الأيقونة عند التمرير */
+  }
+  
+  .file-drop-area:hover {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* تغيير التدرج عند التمرير */
+    border-color: rgb(59, 144, 255); /* تحسين لون الحدود عند التمرير */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* زيادة كثافة الظل */
+    transform: scale(1.02); /* تكبير خفيف عند التمرير */
+  }
+  
+  .file-drop-area p {
+    font-size: 18px; /* تحسين حجم الخط */
+    color: rgb(59, 144, 255);
+    margin: 0;
+    font-weight: 500; /* تحسين سمك الخط */
+  }
+  
+  .file-select-area {
+    margin: 20px;
+  }
+  
+  .file-select-button {
+  background: linear-gradient(145deg, #ffffff, #f0f8ff); /* تدرج خفيف للخلفية */
+  color: rgb(59, 144, 255);
+  padding: 15px 70px; /* زيادة حجم البُعد قليلاً */
+  font-size: 32px; /* تخفيض بسيط لحجم الخط ليكون متناسباً مع التصميم */
+  font-weight: 700; /* زيادة سمك النص */
+  border: 2px solid rgb(59, 144, 255); /* تكبير سمك الحدود */
+  border-radius: 50px; /* جعل الحواف أكثر نعومة */
+  cursor: pointer;
+  transition:  1s;
+  box-shadow: 0 8px 15px rgba(59, 144, 255, 0.2); /* جعل الظل أكثر وضوحاً */
+}
+
+.file-select-button:hover {
+  background: linear-gradient(145deg, rgb(59, 144, 255), #3b8bff); /* تدرج أزرق عند التمرير */
+  color: #ffffff; /* تغيير اللون إلى الأبيض */
+  border-color: rgb(59, 144, 255); /* الحفاظ على نفس لون الحدود */
+  box-shadow: 0 10px 20px rgba(59, 144, 255, 0.4); /* زيادة كثافة الظل */
+  transform: scale(1.05); /* تكبير بسيط عند التمرير */
+}
+  
+
+/* الحاوية الرئيسية */
+.options-container {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* عنوان الخيارات */
+.options-header {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* تصميم الأزرار */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.option-button {
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* تدرج ألوان */
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* تأثير عند التمرير */
+.option-button:hover {
+  transform: translateY(-3px); /* ارتفاع بسيط عند التمرير */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+}
+
+/* عند الضغط */
+.option-button:active {
+  transform: translateY(2px); /* تأثير الضغط للأسفل */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تقليل الظل */
+}
