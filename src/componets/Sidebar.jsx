@@ -35,7 +35,6 @@ const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
-  backgroundColor: "#f0f4f8",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -50,7 +49,6 @@ const closedMixin = (theme) => ({
   }),
   overflowX: "hidden",
   width: `calc(${theme.spacing(7)} + 1px)`,
-  backgroundColor: "#f0f4f8",
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
@@ -436,6 +434,8 @@ export default function Sidebar({ menuItems }) {
         </Toolbar>
       </AppBar>
       <Drawer  sx={{
+              overflow: "hidden", // تعطل أي تمرير غير مرغوب فيه
+
           "& .MuiDrawer-paper": {
             backgroundColor: "#0a1929",
             color: "#fff",
@@ -478,7 +478,10 @@ export default function Sidebar({ menuItems }) {
             fontFamily: "Roboto",
           }}>
           {menuItems.map(({ text, icon }) => (
-            <ListItem key={text} disablePadding sx={{ color: "#1976d2" }}>
+            <ListItem  key={text}
+            disablePadding
+            onMouseEnter={() => setDrawerOpen(true)}
+            onMouseLeave={() => setDrawerOpen(false)}  sx={{ color: "#1976d2" }}>
               <ListItemButton 
               >
                 <ListItemIcon 

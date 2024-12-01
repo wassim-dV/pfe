@@ -13,8 +13,8 @@ function App() {
    
    {/* <EmaliApp /> */}
 
-       < MainAdmin/>
-       {/* <CVSM /> */}
+       {/* < MainAdmin/> */}
+       <CVSM />
 
 
     </>
