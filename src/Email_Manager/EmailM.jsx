@@ -228,141 +228,178 @@ export default function DynamicTables() {
 
       {/* نافذة التعديل */}
       {selectedRow && (
-        <Dialog open={openEditDialog} onClose={handleDialogClose}>
-        <DialogTitle>Edit Row</DialogTitle>
-        <DialogContent>
-          <TextField
-            margin="dense"
-            label="Email titel"
-            fullWidth
-            value={selectedRow.from}
-            onChange={(e) => handleFieldChange('from', e.target.value)}
-          />
-          <h3> Trager to</h3>
-          <Grid container spacing={2}>
-            
-            <Grid item xs={6}>
-              
-              <FormControl fullWidth margin="dense">
-                <InputLabel>To</InputLabel>
-                <Select
-                  sx={{ width: "100%" }}
-                  value={selectedRow.to}
-                  onChange={(e) => handleFieldChange('to', e.target.value)}
-                  label="To"
-                >
-                  <MenuItem value="Doe">Doe</MenuItem>
-                  <MenuItem value="Smith">Smith</MenuItem>
-                  <MenuItem value="Brown">Brown</MenuItem>
-                  <MenuItem value="Taylor">Taylor</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth margin="dense">
-                <InputLabel>Spe Master</InputLabel>
-                <Select
-                  sx={{ width: "100%" }}
-                  value={selectedRow.spe_master}
-                  onChange={(e) => handleFieldChange('spe_master', e.target.value)}
-                  label="Spe Master"
-                >
-                  <MenuItem value="CS">CS</MenuItem>
-                  <MenuItem value="IT">IT</MenuItem>
-                  <MenuItem value="Math">Math</MenuItem>
-                  <MenuItem value="Physics">Physics</MenuItem>
-                </Select>
-              </FormControl>
-              
-            </Grid>
-          </Grid>
-          <h3>Dead line</h3>
-          <Grid container spacing={2}>
-            
-            <Grid item xs={5}>
-              
-              
-              <FormControl fullWidth margin="dense">
-              <TextField
-                  type="date">
-                  </TextField>   
-              </FormControl>
-            </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth margin="dense">
-                 <TextField
-                  type="date">
-                  </TextField>                  
-              </FormControl>
-            </Grid>
-          </Grid>
-
-          <FormControlLabel
-  control={
-    <RadioGroup
-      value={selectedRow.relance}
-      onChange={(e) => handleFieldChange('relance', e.target.value)}
-      row
-      sx={{ alignItems: 'center' }} // لضمان أن جميع العناصر تكون في نفس السطر
-    >
-        <h3 style={{marginLeft:"18px"}}>Relance</h3>
-
-      <FormControlLabel
-        value="Yes"
-        control={<Radio />}
-        label="Yes"
-        sx={{ marginLeft: "30px" }} // المسافة بين الزر والعنوان
-      />
-      <FormControlLabel
-        value="No"
-        control={<Radio />}
-        label="No"
-        sx={{ marginRight: "30px" }} // المسافة بين الزر والعنوان
-      />
-    </RadioGroup>
-  }
-  sx={{
-    display: 'flex',
-    alignItems: 'center', // محاذاة العنوان والأزرار بشكل أفقي
-    marginBottom: '20px',
+        <Dialog 
+  open={openEditDialog} 
+  onClose={handleDialogClose}
+  PaperProps={{
+    sx: { padding: 2, borderRadius: "12px", maxWidth: "600px" },
   }}
-/>
+>
+  <DialogTitle 
+    sx={{ 
+      fontSize: "1.5rem", 
+      fontWeight: "bold", 
+      color: "#1976d2", 
+      textAlign: "center" 
+    }}
+  >
+    Edit Row
+  </DialogTitle>
 
+  <DialogContent 
+    sx={{ 
+      display: "flex", 
+      flexDirection: "column", 
+      gap: 2 
+    }}
+  >
+    <TextField
+      margin="dense"
+      label="Email Title"
+      fullWidth
+      value={selectedRow.from}
+      onChange={(e) => handleFieldChange('from', e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
 
-          {selectedRow.relance === 'Yes' && (
-            <TextField
-                          sx={{width:"450px"}}
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Trager To</h3>
+    <Grid container spacing={2}>
+      <Grid item xs={6}>
+        <FormControl fullWidth margin="dense">
+          <InputLabel>To</InputLabel>
+          <Select
+            sx={{ borderRadius: "8px" }}
+            value={selectedRow.to}
+            onChange={(e) => handleFieldChange('to', e.target.value)}
+            label="To"
+          >
+            <MenuItem value="Doe">Doe</MenuItem>
+            <MenuItem value="Smith">Smith</MenuItem>
+            <MenuItem value="Brown">Brown</MenuItem>
+            <MenuItem value="Taylor">Taylor</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
 
-              label="Relance Date"
-              type="date"
-              fullWidth
-              InputLabelProps={{ shrink: true }}
-              value={selectedRow.date_creation}
-              onChange={(e) => handleFieldChange('date_creation', e.target.value)}
-            />
-          )}
-          <h3>Description</h3>
+      <Grid item xs={6}>
+        <FormControl fullWidth margin="dense">
+          <InputLabel>Spe Master</InputLabel>
+          <Select
+            sx={{ borderRadius: "8px" }}
+            value={selectedRow.spe_master}
+            onChange={(e) => handleFieldChange('spe_master', e.target.value)}
+            label="Spe Master"
+          >
+            <MenuItem value="CS">CS</MenuItem>
+            <MenuItem value="IT">IT</MenuItem>
+            <MenuItem value="Math">Math</MenuItem>
+            <MenuItem value="Physics">Physics</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
+    </Grid>
 
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Deadline</h3>
+    <Grid container spacing={2}>
+      <Grid item xs={5}>
+        <FormControl fullWidth margin="dense">
+          <TextField type="date" sx={{ borderRadius: "8px" }} />
+        </FormControl>
+      </Grid>
 
-           <TextField
-              margin="dense"
-              label="Description"
-              type="text"
-              fullWidth
-              InputLabelProps={{ shrink: true }}
-              value={selectedRow.date_creation}
-              onChange={(e) => handleFieldChange('date_creation', e.target.value)}
-            />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose} color="secondary">
-            Cancel
-          </Button>
-          <Button onClick={handleSave} color="primary">
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <Grid item xs={6}>
+        <FormControl fullWidth margin="dense">
+          <TextField type="date" sx={{ borderRadius: "8px" }} />
+        </FormControl>
+      </Grid>
+    </Grid>
+
+    <FormControl
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "20px",
+      }}
+    >
+      <h3 style={{ marginLeft: "18px", color: "#1565c0" }}>Relance</h3>
+      <RadioGroup
+        value={selectedRow.relance}
+        onChange={(e) => handleFieldChange('relance', e.target.value)}
+        row
+        sx={{ alignItems: "center", marginLeft: "20px" }}
+      >
+        <FormControlLabel
+          value="Yes"
+          control={<Radio color="primary" />}
+          label="Yes"
+        />
+        <FormControlLabel
+          value="No"
+          control={<Radio color="secondary" />}
+          label="No"
+        />
+      </RadioGroup>
+    </FormControl>
+
+    {selectedRow.relance === 'Yes' && (
+      <TextField
+        sx={{ width: "100%" }}
+        label="Relance Date"
+        type="date"
+        fullWidth
+        InputLabelProps={{ shrink: true }}
+        value={selectedRow.date_creation}
+        onChange={(e) => handleFieldChange('date_creation', e.target.value)}
+      />
+    )}
+
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Description</h3>
+    <TextField
+      margin="dense"
+      label="Description"
+      type="text"
+      fullWidth
+      InputLabelProps={{ shrink: true }}
+      value={selectedRow.date_creation}
+      onChange={(e) => handleFieldChange('date_creation', e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+  </DialogContent>
+
+  <DialogActions sx={{ justifyContent: "center", gap: 2 }}>
+    <Button
+      onClick={handleDialogClose}
+      color="secondary"
+      variant="outlined"
+      sx={{
+        textTransform: "none",
+        borderRadius: "8px",
+      }}
+    >
+      Cancel
+    </Button>
+    <Button
+      onClick={handleSave}
+      color="primary"
+      variant="contained"
+      sx={{
+        textTransform: "none",
+        borderRadius: "8px",
+      }}
+    >
+      Save
+    </Button>
+  </DialogActions>
+</Dialog>
+
       )}
     </ThemeProvider>
   );

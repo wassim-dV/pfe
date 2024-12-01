@@ -11,10 +11,10 @@ function App() {
   return (
     <>
    
-   {/* <EmaliApp /> */}
+   <EmaliApp />
 
        {/* < MainAdmin/> */}
-       <CVSM />
+       {/* <CVSM /> */}
 
 
     </>

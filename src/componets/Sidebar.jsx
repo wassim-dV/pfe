@@ -492,24 +492,36 @@ export default function Sidebar({ menuItems }) {
                   display: "flex",
                   alignItems: "center",
                   borderRadius: "50%",
-                  padding: "8px",
+                  padding: "8px 1px",
+                  transition: "all 0.3s ease", // إضافة تأثير للأنيميشن
                   "& svg": {
                     fill: "none",
                     stroke: "#64b5f6",
                     strokeWidth: 2,
                   },
-                }}>{icon}</ListItemIcon>
-                <ListItemText  sx={{
-                    opacity: open ? 1 : 0,
-                    fontWeight: 500,
-                    textTransform: "capitalize",
-                    letterSpacing: "0.5px",
-                    fontSize: "19px !important",
-                  }} primary={text} />
+                
+                }}
+              >
+                {icon}</ListItemIcon>
+                <ListItemText   sx={{
+    fontWeight: 600, // جعل النص عريضاً قليلاً
+    color: "#1976d2",
+    textTransform: "capitalize",
+    letterSpacing: "0.5px",
+    fontSize: "24px !important",
+    transition: "all 0.3s ease", // تأثير للأنيميشن
+    "&:hover": {
+      color: "#1565c0", // تغيير لون النص عند التمرير
+      transform: "scale(1.05)", // تكبير النص قليلاً
+    },
+  }}
+  primary={text} />
               </ListItemButton>
             </ListItem>
           ))}
-          <ListItem disablePadding sx={{ color: "#1976d2" }}>
+          <ListItem   disablePadding
+            onMouseEnter={() => setDrawerOpen(true)}
+            onMouseLeave={() => setDrawerOpen(false)} sx={{ color: "#1976d2" }}>
             <ListItemButton
               // // sx={{
               // //   minHeight: 56,
@@ -530,12 +542,13 @@ export default function Sidebar({ menuItems }) {
                   justifyContent: "center",
                   display: "flex",
                   alignItems: "center",
+                  marginTop:'470px',
                   borderRadius: "50%",
-                  padding: "8px",
+                  padding: "8px 1px",
                   "& svg": {
                     fill: "none",
                     stroke: "#64b5f6",
-                    strokeWidth: 2,
+                    strokeWidth: 1.75,
                   },
                 }}
               >
@@ -544,6 +557,8 @@ export default function Sidebar({ menuItems }) {
               <ListItemText
                 primary="Log Out"
                 sx={{
+                  marginTop:'475px',
+
                   opacity: open ? 1 : 0,
                   fontWeight: 500,
                   textTransform: "capitalize",
