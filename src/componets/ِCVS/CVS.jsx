@@ -52,6 +52,10 @@ function CVS() {
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   className="upload-icon"
+                  width="98" /* لتكبير العرض */
+                  height="198" /* لتكبير الارتفاع */
+                  style={{ width: '58px', height: '58px' ,    transform: 'translateY(16px)', /* إنزال الأيقونة لأسفل */
+                  }}
                 >
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
                   <path
@@ -63,7 +67,7 @@ function CVS() {
                   />
                 </svg>
               </span>
-              Select
+              Select a file
             </label>
           </div>
 
@@ -79,7 +83,7 @@ function CVS() {
       )}
 
       {step === 2 && ( // الخطوة الثانية: عرض الخيارات
-        <div >
+        <div style={{marginTop:'110px'}} >
         <h3 className="options-header"> select category :</h3>
         <div className="options">
           <button
@@ -105,7 +109,12 @@ function CVS() {
       
       )}
 
-      {file && <div className="file-info">Uploaded file: {file.name}</div>}
+{file && (
+  <div className="file-info">
+    <span className="file-icon">📁</span>
+    <span className="file-name">Uploaded file: {file.name}</span>
+  </div>
+)}
     </div>
   );
 }

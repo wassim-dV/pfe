@@ -125,3 +125,32 @@
   transform: translateY(2px); /* تأثير الضغط للأسفل */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تقليل الظل */
 }
+
+.file-info {
+  display: flex;
+  align-items: center;
+  background-color: #f0f4ff; /* خلفية بلون لطيف */
+  border: 1px solid #d1d9ff; /* إطار بلون أغمق قليلاً */
+  border-radius: 8px; /* زوايا مستديرة */
+  padding: 10px 15px; /* مسافة داخلية */
+  font-family: 'Arial', sans-serif; /* خط مميز */
+  font-size: 14px;
+  color: #333; /* لون النص */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+  margin-top: 15px; /* مسافة من العناصر الأخرى */
+}
+
+.file-icon {
+  font-size: 18px; /* حجم أيقونة الملف */
+  margin-right: 10px; /* مسافة بين الأيقونة والنص */
+  color: #5c6bc0; /* لون الأيقونة */
+}
+
+.file-name {
+  font-weight: bold; /* نص غامق */
+  color: #3f51b5; /* لون ملفت للنظر */
+  white-space: nowrap; /* منع النص من الانتقال إلى سطر جديد */
+  overflow: hidden;
+  text-overflow: ellipsis; /* إضافة "..." إذا كان النص طويلاً جدًا */
+}
+
