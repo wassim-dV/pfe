@@ -53,7 +53,7 @@ function CVS() {
                   viewBox="0 0 24 24"
                   className="upload-icon"
                 >
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                  {/* <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /> */}
                   <path
                     d="M12 8v8m0 0l4-4m-4 4l-4-4"
                     stroke="currentColor"
@@ -80,7 +80,7 @@ function CVS() {
 
       {step === 2 && ( // الخطوة الثانية: عرض الخيارات
         <div >
-        <h3 className="options-header"> select category</h3>
+        <h3 className="options-header"> select category :</h3>
         <div className="options">
           <button
             className="option-button"
