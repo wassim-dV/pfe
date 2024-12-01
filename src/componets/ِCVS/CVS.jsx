@@ -63,7 +63,7 @@ function CVS() {
                   />
                 </svg>
               </span>
-              Select a file
+              Select
             </label>
           </div>
 
