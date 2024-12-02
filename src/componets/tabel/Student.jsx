@@ -110,7 +110,7 @@ export default function Team() {
       <Box
         sx={{
           height: 600,
-          width: '100%',
+          width: '8800px',
           margin: '50px auto',
           maxWidth: '1000px',
           padding: '20px',

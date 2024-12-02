@@ -523,17 +523,22 @@ export default function Sidebar({ menuItems }) {
             onMouseEnter={() => setDrawerOpen(true)}
             onMouseLeave={() => setDrawerOpen(false)} sx={{ color: "#1976d2" }}>
             <ListItemButton
-              // // sx={{
-              // //   minHeight: 56,
-              // //   px: 2.5,
-              // //   bgcolor: "rgba(10, 25, 41, 0.8)",
-              // //   borderRadius: "12px",
-              // //   "&:hover": {
-              // //     bgcolor: "#1e3a56",
-              // //     transform: "scale(1.05)",
-              // //   },
-              // //   transition: "all 0.3s ease",
-              // // }}
+           
+            //  sx={{
+              
+            //     minHeight: 56,
+            //     justifyContent: drawerOpen ? 'initial' : 'center',
+            //     px: 2.5,
+            //     bgcolor: index % 2 === 0 ? 'rgba(10, 25, 41, 0.8)' : 'rgba(15, 32, 51, 0.8)',
+            //     borderRadius: '12px',
+            //     '&:hover': {
+            //       bgcolor: '#1e3a56',
+            //       transform: 'scale(1.05)',
+            //     },
+            //     transition: 'all 0.3s ease',
+              
+            // }}
+              
             >
               <ListItemIcon
                 sx={{
