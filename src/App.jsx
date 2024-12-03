@@ -12,11 +12,11 @@ function App() {
   return (
     <>
    
-   {/* <EmaliApp /> */}
+   <EmaliApp />
 
        {/* < MainAdmin/> */}
        {/* <CVSM /> */}
-              <ProfilMain />
+              {/* <ProfilMain /> */}
 
 
 

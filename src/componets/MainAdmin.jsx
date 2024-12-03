@@ -30,7 +30,7 @@ export default function MainAdmin() {
   fontfamily: "Arial, sans-serif"}}>
     <Sidebar  menuItems={menuItems}  />;    {/* <Sidebar /> */}
         
-        <Student /> 
+        <Company /> 
 
         
     </div>
