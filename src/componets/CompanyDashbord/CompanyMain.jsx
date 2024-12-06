@@ -4,7 +4,7 @@ import Sidebar  from '../Sidebar';
 import HomeIcon from "@mui/icons-material/Home";
 import FolderIcon from "@mui/icons-material/Folder";
 import EmailIcon from "@mui/icons-material/Email";
-import TeacherDashbord from './TeacherDashbord';
+import CompanyDashbord from './CompanyDashbord';
 
 
 const menuItems = [
@@ -12,7 +12,7 @@ const menuItems = [
   { text: "Projects", icon: <FolderIcon /> },
 ];
 
-export default function TeacherMain() {
+export default function CompanyMain() {
   return (
     <div style={{display: "flex",
         margin: "-10px -20px",
@@ -20,7 +20,7 @@ export default function TeacherMain() {
         fontfamily: "Arial, sans-serif"}}>
           <Sidebar  menuItems={menuItems}  />;    
               
-          <TeacherDashbord />
+          <CompanyDashbord />
               
           </div>  )
 }
