@@ -28,7 +28,7 @@ export default function MainAdmin() {
   margin: "-10px -30px",
   height: "100vh",
   fontfamily: "Arial, sans-serif"}}>
-    <Sidebar  menuItems={menuItems}  />;    {/* <Sidebar /> */}
+    <Sidebar  menuItems={menuItems}  />;  
         
         <Company /> 
 

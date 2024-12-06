@@ -28,8 +28,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 // بيانات كل جدول
 const initialData = {
   table1: [
-    { id: 1, from: 'John',  spe_master: 'CS', date_creation: '2023-12-19', Status: 'Yes', action: 'Pending' },
-    { id: 2, from: 'Jane',  spe_master: 'IT', date_creation: '2023-08-14', Status: 'No', action: 'Completed' },
+    { id: 1, from: 'Jane',  spe_master: 'IT', date_creation: '2023-08-14', Status: 'No', action: 'Completed' },
+
+        { id: 2, from: 'Jane',  spe_master: 'IT', date_creation: '2023-08-14', Status: 'No', action: 'Completed' },
     { id: 3, from: 'John',  spe_master: 'CS', date_creation: '2023-12-19', Status: 'Yes', action: 'Pending' },
     { id: 4, from: 'Jane', spe_master: 'IT', date_creation: '2023-08-14', Status: 'No', action: 'Completed' },
     { id: 5, from: 'John', spe_master: 'CS', date_creation: '2023-12-19', Status: 'Yes', action: 'Pending' },
@@ -154,18 +155,36 @@ const handleAddSave = () => {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 100, align: 'center', headerAlign: 'center',   headerClassName: 'header-bold', // نمط CSS مخصص
+    { field: 'id', headerName: 'ID', width: 70, align: 'center', headerAlign: 'center',   headerClassName: 'header-bold', // نمط CSS مخصص
     },
-    { field: 'from', headerName: 'From', width: 180, align: 'center', headerAlign: 'center' },
+    { field: 'from', headerName: 'From', width: 160, align: 'center', headerAlign: 'center' },
     { field: 'spe_master', headerName: 'Spe Master', width: 210, align: 'center', headerAlign: 'center' },
-    { field: 'date_creation', headerName: 'Date Creation', width: 210, align: 'center', headerAlign: 'center' },
-    { field: 'Status', headerName: 'Status', width: 181, align: 'center', headerAlign: 'center' },
+    { field: 'date_creation', headerName: 'Date Creation', width: 180, align: 'center', headerAlign: 'center' },
     {
+      field: 'Status',
+      headerName: 'Status',
+      width: 150,
+      renderCell: (params) => (
+        <Box sx={{ display: 'flex', alignItems: 'center', headerAlign:"center" }}>
+          <Box
+            sx={{
+              alignItems: 'center', headerAlign:"center",
+              width: '30px',
+              height: '30px',
+              borderRadius: '50%',
+              backgroundColor: params.value === 'Yes' ? 'green' : 'red',
+              marginRight: '8px',
+            }}
+          />
+          {params.value}
+        </Box>
+      ),
+    },    {
 
       
       field: 'actions',
       headerName: 'Actions',
-      width: 98,
+      width: 105,
       align: 'center',
       headerAlign: 'center',
       renderCell: (params) => (
@@ -193,17 +212,18 @@ const handleAddSave = () => {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          height: 600,
-          width: '100%',
-          margin: '50px auto',
-          maxWidth: '1000px',
+          height: 620,
+          width: '950px',
+          marginLeft:'-95px !important',
+          margin: '55px -110px',
+          maxWidth: '3002px',
           padding: '20px',
           backgroundColor: '#f4f6f8',
           borderRadius: '20px',
           boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center', mb: 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center', mb: 2 }}>
   {['Appel à proposition', 'Appel à encadrement'].map((item, index) => (
     <Box
       key={index}
@@ -255,23 +275,33 @@ const handleAddSave = () => {
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
       {currentTable === 'table1' && (
-      <Button
+<Button
   variant="contained"
   color="primary"
   onClick={() => setOpenAddDialog(true)}
   sx={{
+    backgroundColor:"#fff",
+      color: "#64b5f6",
+      fontWeight:'bold',
+      border:"1px solid #64b5f6",
+
+
     position: 'sticky',  // استخدام sticky بدلاً من fixed
-    top: '-100px',         // وضع الزر في مكان مناسب من الأعلى
-    right: '1080px',       // تحريك الزر إلى اليمين مع مسافة من الحافة
-    // وضع الزر في منتصف الصفحة أفقيًا
-    transform: 'translateY(-200%)', // ضمان مركزية الزر
+    top: '666px',    
+    width:'160px',
+    height:"40px",     // وضع الزر في مكان مناسب من الأعلى
+    left: '120px',         // وضع الزر في منتصف الصفحة أفقيًا
+    transform: 'translateX(-500%)', // ضمان مركزية الزر
 
     zIndex: 1000,        // التأكد من أن الزر فوق العناصر الأخرى
     textTransform: 'none',
     borderRadius: '8px',
   }}
 >
-propose a project</Button>)}
+  Propose a project
+</Button>
+
+)}
 
 
 </Box>
@@ -286,7 +316,7 @@ propose a project</Button>)}
 >
   <DialogTitle
     sx={{
-    width:'390px',
+    width:'500px',
       fontSize: "1.5rem",
       fontWeight: "bold",
       color: "#1976d2",
@@ -406,11 +436,12 @@ propose a project</Button>)}
   open={openEditDialog} 
   onClose={handleDialogClose}
   PaperProps={{
-    sx: { padding: 2, borderRadius: "12px", maxWidth: "600px" },
+    sx: { padding: 2, borderRadius: "12px", maxWidth: "900px" },
   }}
 >
   <DialogTitle 
     sx={{ 
+      width:'500px',
       fontSize: "1.5rem", 
       fontWeight: "bold", 
       color: "#1976d2", 
