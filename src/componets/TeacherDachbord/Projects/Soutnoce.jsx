@@ -566,8 +566,8 @@ const handleAddSave = () => {
 
 
     position: 'sticky',  // استخدام sticky بدلاً من fixed
-    top: '666px',    
-    width:'160px',
+    top: '675px',    
+    width:'220px',
     height:"40px",     // وضع الزر في مكان مناسب من الأعلى
     left: '120px',         // وضع الزر في منتصف الصفحة أفقيًا
     transform: 'translateX(-500%)', // ضمان مركزية الزر
@@ -577,7 +577,7 @@ const handleAddSave = () => {
     borderRadius: '8px',
   }}
 >
-  Propose a project
+Download the summary file
 </Button>
 
 )}
@@ -586,202 +586,6 @@ const handleAddSave = () => {
 </Box>
 
 {/* نافذة الإضافة */}
-<Dialog
-  open={openAddDialog}
-  onClose={() => setOpenAddDialog(false)}
-  PaperProps={{
-    sx: { padding: 2, borderRadius: "12px", maxWidth: "600px" },
-  }}
->
-  <DialogTitle
-    sx={{
-      width: '500px',
-      fontSize: "1.5rem",
-      fontWeight: "bold",
-      color: "#1976d2",
-      textAlign: "center",
-    }}
-  >
-    Add New Row
-  </DialogTitle>
-
-  <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-    {/* حقل Project Title */}
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Project Title
-    </Typography>
-    
-    <TextField
-      margin="dense"
-      label="Project Title"
-      fullWidth
-      onChange={(e) => handleFieldChange('projectTitle', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-
-    {/* الحقول الجديدة */}
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Nom et prénom encadrant
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Nom et prénom encadrant"
-      fullWidth
-      onChange={(e) => handleFieldChange('supervisorName', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Nom et prénom co-encadrant
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Nom et prénom co-encadrant"
-      fullWidth
-      onChange={(e) => handleFieldChange('coSupervisorName', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Option
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Option"
-      fullWidth
-      select
-      onChange={(e) => handleFieldChange('option', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    >
-      <MenuItem value="GL">GL</MenuItem>
-      <MenuItem value="IA">IA</MenuItem>
-      <MenuItem value="RSD">RSD</MenuItem>
-      <MenuItem value="SIC">SIC</MenuItem>
-    </TextField>
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Type sujet
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Type sujet"
-      fullWidth
-      select
-      onChange={(e) => handleFieldChange('subjectType', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    >
-      <MenuItem value="classique">Classique</MenuItem>
-      <MenuItem value="innovant">Innovant</MenuItem>
-    </TextField>
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Intitulé du PFE
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Intitulé du PFE"
-      fullWidth
-      onChange={(e) => handleFieldChange('PFEName', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Résumé
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Résumé"
-      fullWidth
-      multiline
-      rows={4}
-      onChange={(e) => handleFieldChange('summary', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Technologies utilisées
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Technologies utilisées"
-      fullWidth
-      onChange={(e) => handleFieldChange('technologies', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-
-    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: '-10px' }}>
-      Besoins matériel
-    </Typography>
-    <TextField
-      margin="dense"
-      label="Besoins matériel"
-      fullWidth
-      onChange={(e) => handleFieldChange('materialNeeds', e.target.value)}
-      sx={{
-        "& .MuiInputBase-root": {
-          borderRadius: "8px",
-        },
-      }}
-    />
-  </DialogContent>
-
-  <DialogActions sx={{ justifyContent: "center", gap: 2 }}>
-    <Button
-      onClick={() => setOpenAddDialog(false)}
-      color="secondary"
-      variant="outlined"
-      sx={{
-        textTransform: "none",
-        borderRadius: "8px",
-      }}
-    >
-      Cancel
-    </Button>
-    <Button
-      onClick={handleAddSave}
-      color="primary"
-      variant="contained"
-      sx={{
-        textTransform: "none",
-        borderRadius: "8px",
-      }}
-    >
-      Save
-    </Button>
-  </DialogActions>
-</Dialog>
 
 
 

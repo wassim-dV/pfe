@@ -724,15 +724,16 @@ const handleNavigation7 = () => {
               "& svg": {
                 fill: "none",
                 stroke: "#64b5f6",
-                strokeWidth: 2,
+                strokeWidth: 60,
     
               },
             }}
         >
-          <SiKnowledgebase />
+                   <FaFolder />
+
         </ListItemIcon>
         <ListItemText
-          primary="soutenance"
+          primary="Project"
           sx={{
             fontWeight: 600,
             color: "#1976d2",
@@ -770,15 +771,15 @@ const handleNavigation7 = () => {
           "& svg": {
             fill: "none",
             stroke: "#64b5f6",
-            strokeWidth: 58,
+            strokeWidth: 2,
 
           },
         }}
         >
-          <FaFolder />
+          <SiKnowledgebase />
         </ListItemIcon>
         <ListItemText
-          primary="Project"
+          primary="soutenance"
           sx={{
             marginLeft:"5px",
             fontWeight: 600,
