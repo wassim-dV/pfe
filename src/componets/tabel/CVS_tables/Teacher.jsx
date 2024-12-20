@@ -4,8 +4,6 @@ import {  IconButton, Modal, TextField, Typography } from '@mui/material';
 
 import { Box, Button, ThemeProvider, createTheme } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SearchIcon from '@mui/icons-material/Search';
 
 const initialRows = [
   { id: 1, Name: 'John', LastName: 'Doe', Dateofrecruitment: '2000-12-19', Email: 'john.doe@example.com' , Grade: "Teacher" },

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink , useNavigate } from 'react-router-dom'; // إعادة تسمية Link الخاص بـ React Router
 import { styled, useTheme } from "@mui/material/styles";
 import {
   Box,
@@ -30,6 +31,10 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from "@mui/icons-material/Logout";
+import EmailIcon from "@mui/icons-material/Email";
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import HomeIcon from "@mui/icons-material/Home";
+
 
 const drawerWidth = 240;
 
@@ -99,7 +104,25 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function Sidebar({ menuItems }) {
+export default function SidebarStudent({  }) {
+
+ const navigate = useNavigate();
+
+
+ const handleNavigation = () => {
+  navigate("/cvs");
+}
+const handleNavigation2 = () => {
+  navigate("/Email");
+}
+
+const handleNavigation3 = () => {
+  navigate("/deadline");
+}
+const handleNavigation4 = () => {
+  navigate("/Home");
+}
+
   const theme = useTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [notificationAnchor, setNotificationAnchor] = React.useState(null);
@@ -246,8 +269,11 @@ export default function Sidebar({ menuItems }) {
       },
     }}
   >
-    <AccountCircleIcon sx={{ marginRight: 1 }} /> {/* أيقونة الحساب */}
-    Profile
+    <RouterLink to="/Profil" style={{ textDecoration: 'none', color: 'inherit' }}>
+  <AccountCircleIcon sx={{ marginRight: 1 }} /> {/* أيقونة الإعدادات */}
+  Profil
+</RouterLink>
+     
   </MenuItem>
   <MenuItem
     onClick={handleUserMenuClose}
@@ -260,10 +286,13 @@ export default function Sidebar({ menuItems }) {
         transform: 'scale(1.05)',
       },
     }}
-  >
-    <SettingsIcon sx={{ marginRight: 1 }} /> {/* أيقونة الإعدادات */}
-    Settings
+  >  <RouterLink to="/settings" style={{ textDecoration: 'none', color: 'inherit' }}>
+  <SettingsIcon sx={{ marginRight: 1 }} /> {/* أيقونة الإعدادات */}
+  Settings
+</RouterLink>
   </MenuItem>
+
+  
   <MenuItem
     onClick={handleUserMenuClose}
     sx={{
@@ -477,67 +506,62 @@ export default function Sidebar({ menuItems }) {
             padding: "10px 0",
             fontFamily: "Roboto",
           }}>
-          {menuItems.map(({ text, icon }) => (
-            <ListItem  key={text}
-            disablePadding
-            onMouseEnter={() => setDrawerOpen(true)}
-            onMouseLeave={() => setDrawerOpen(false)}  sx={{ color: "#1976d2" }}>
-              <ListItemButton 
-              >
-                <ListItemIcon 
-                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  display: "flex",
-                  alignItems: "center",
-                  borderRadius: "50%",
-                  padding: "8px 1px",
-                  transition: "all 0.3s ease", // إضافة تأثير للأنيميشن
-                  "& svg": {
-                    fill: "none",
-                    stroke: "#64b5f6",
-                    strokeWidth: 2,
-                  },
-                
-                }}
-              >
-                {icon}</ListItemIcon>
-                <ListItemText   sx={{
-    fontWeight: 600, // جعل النص عريضاً قليلاً
-    color: "#1976d2",
-    textTransform: "capitalize",
-    letterSpacing: "0.5px",
-    fontSize: "24px !important",
-    transition: "all 0.3s ease", // تأثير للأنيميشن
-    "&:hover": {
-      color: "#1565c0", // تغيير لون النص عند التمرير
-      transform: "scale(1.05)", // تكبير النص قليلاً
-    },
-  }}
-  primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                     <ListItem
+      disablePadding
+      onMouseEnter={() => setDrawerOpen(true)}
+      onMouseLeave={() => setDrawerOpen(false)}
+      sx={{ color: "#1976d2" }}
+    >
+      <ListItemButton onClick={handleNavigation4}>
+        <ListItemIcon
+          sx={{
+            minWidth: 0,
+            mr: open ? 3 : "auto",
+            justifyContent: "center",
+            display: "flex",
+            alignItems: "center",
+            borderRadius: "50%",
+            padding: "8px 1px",
+            transition: "all 0.3s ease",
+            "& svg": {
+              fill: "none",
+              stroke: "#64b5f6",
+              strokeWidth: 2,
+            },
+          }}
+        >
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Home"
+          sx={{
+            fontWeight: 600,
+            color: "#1976d2",
+            textTransform: "capitalize",
+            letterSpacing: "0.5px",
+            fontSize: "24px !important",
+            transition: "all 0.3s ease",
+            "&:hover": {
+              color: "#1565c0",
+              transform: "scale(1.05)",
+            },
+          }}
+        />
+      </ListItemButton>
+    </ListItem>
+
+          
+          
+
+
+    
+
+    
+          
           <ListItem   disablePadding
             onMouseEnter={() => setDrawerOpen(true)}
             onMouseLeave={() => setDrawerOpen(false)} sx={{ color: "#1976d2" }}>
             <ListItemButton
-           
-            //  sx={{
-              
-            //     minHeight: 56,
-            //     justifyContent: drawerOpen ? 'initial' : 'center',
-            //     px: 2.5,
-            //     bgcolor: index % 2 === 0 ? 'rgba(10, 25, 41, 0.8)' : 'rgba(15, 32, 51, 0.8)',
-            //     borderRadius: '12px',
-            //     '&:hover': {
-            //       bgcolor: '#1e3a56',
-            //       transform: 'scale(1.05)',
-            //     },
-            //     transition: 'all 0.3s ease',
-              
-            // }}
               
             >
               <ListItemIcon

@@ -176,7 +176,7 @@ function UserSettings() {
 
           {/* قسم التفاصيل */}
           <div>
-            <h3 style={{ marginBottom: "15px", color: "#555" }}>Details</h3>
+            <h3 style={{ marginBottom: "15px", color: "#555" , marginLeft:"-390px" }}>Details</h3>
             <div
   style={{
     display: "flex",

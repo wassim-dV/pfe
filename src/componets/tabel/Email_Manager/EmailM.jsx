@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import Swal from "sweetalert2";
+
 import {
   Box,
   Button,
@@ -45,26 +47,7 @@ const initialData = {
     { id: 7, from: 'Alice', to: 'Student', spe_master: 'Math', date_creation: '2023-07-12', relance: 'Yes', action: 'In Progress' },
     { id: 8, from: 'Bob', to: 'Teacher', spe_master: 'Physics', date_creation: '2023-05-20', relance: 'No', action: 'Pending' },
   ],
-  table3: [
-    { id: 1, from: 'Charlie', to: 'Teacher', spe_master: 'Bio', date_creation: '2023-11-30', relance: 'Yes', action: 'In Progress' },
-    { id: 2, from: 'Dana', to: 'Student', spe_master: 'Chemistry', date_creation: '2023-03-25', relance: 'No', action: 'Completed' },
-    { id: 3, from: 'Charlie', to: 'Teacher', spe_master: 'Bio', date_creation: '2023-11-30', relance: 'Yes', action: 'In Progress' },
-    { id: 4, from: 'Dana', to: 'Student', spe_master: 'Chemistry', date_creation: '2023-03-25', relance: 'No', action: 'Completed' },
-    { id: 5, from: 'Charlie', to: 'Teacher', spe_master: 'Bio', date_creation: '2023-11-30', relance: 'Yes', action: 'In Progress' },
-    { id: 6, from: 'Dana', to: 'Student', spe_master: 'Chemistry', date_creation: '2023-03-25', relance: 'No', action: 'Completed' },
-    { id: 7, from: 'Charlie', to: 'Teacher', spe_master: 'Bio', date_creation: '2023-11-30', relance: 'Yes', action: 'In Progress' },
-    { id: 8, from: 'Dana', to: 'Student', spe_master: 'Chemistry', date_creation: '2023-03-25', relance: 'No', action: 'Completed' },
-  ],
-  table4: [
-    { id: 1, from: 'Eve', to: 'Student', spe_master: 'Eng', date_creation: '2023-09-15', relance: 'Yes', action: 'Pending' },
-    { id: 2, from: 'Frank', to: 'Teacher', spe_master: 'Art', date_creation: '2023-04-10', relance: 'No', action: 'Completed' },
-    { id: 3, from: 'Eve', to: 'Student', spe_master: 'Eng', date_creation: '2023-09-15', relance: 'Yes', action: 'Pending' },
-    { id: 4, from: 'Frank', to: 'Teacher', spe_master: 'Art', date_creation: '2023-04-10', relance: 'No', action: 'Completed' },
-    { id: 5, from: 'Eve', to: 'Student', spe_master: 'Eng', date_creation: '2023-09-15', relance: 'Yes', action: 'Pending' },
-    { id: 6, from: 'Frank', to: 'Teacher', spe_master: 'Art', date_creation: '2023-04-10', relance: 'No', action: 'Completed' },
-    { id: 7, from: 'Eve', to: 'Student', spe_master: 'Eng', date_creation: '2023-09-15', relance: 'Yes', action: 'Pending' },
-    { id: 8, from: 'Frank', to: 'Teacher', spe_master: 'Art', date_creation: '2023-04-10', relance: 'No', action: 'Completed' },
-  ],
+  
 };
 
 const theme = createTheme({
@@ -116,28 +99,47 @@ export default function DynamicTables() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm(`Are you sure you want to delete row with ID: ${id}?`)) {
-      setData((prevData) => ({
-        ...prevData,
-        [currentTable]: prevData[currentTable].filter((row) => row.id !== id),
-      }));
-    }
+    Swal.fire({
+      title: "Do you want to delete this item?",
+      text: `Are you sure you want to delete the item with ID: ${id}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setData((prevData) => ({
+          ...prevData,
+          [currentTable]: prevData[currentTable].filter((row) => row.id !== id),
+        }));
+  
+        Swal.fire({
+          title: "Deleted!",
+          text: `The item with ID: ${id} has been deleted.`,
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "OK",
+        });
+      }
+    });
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70, align: 'center', headerAlign: 'center',   headerClassName: 'header-bold', // نمط CSS مخصص
+    { field: 'id', headerName: 'ID', width: 80, align: 'center', headerAlign: 'center',   headerClassName: 'header-bold', // نمط CSS مخصص
     },
-    { field: 'from', headerName: 'From', width: 140, align: 'center', headerAlign: 'center' },
-    { field: 'to', headerName: 'To', width: 140, align: 'center', headerAlign: 'center' },
-    { field: 'spe_master', headerName: 'Spe Master', width: 180, align: 'center', headerAlign: 'center' },
-    { field: 'date_creation', headerName: 'Date Creation', width: 180, align: 'center', headerAlign: 'center' },
-    { field: 'relance', headerName: 'Relance', width: 150, align: 'center', headerAlign: 'center' },
+    { field: 'from', headerName: 'From', width: 180, align: 'center', headerAlign: 'center' },
+    { field: 'to', headerName: 'To', width: 180, align: 'center', headerAlign: 'center' },
+    { field: 'spe_master', headerName: 'Spe Master', width: 210, align: 'center', headerAlign: 'center' },
+    { field: 'date_creation', headerName: 'Date Creation', width: 210, align: 'center', headerAlign: 'center' },
+    { field: 'relance', headerName: 'Relance', width: 190, align: 'center', headerAlign: 'center' },
     {
 
       
       field: 'actions',
       headerName: 'Actions',
-      width: 98,
+      width: 120,
       align: 'center',
       headerAlign: 'center',
       renderCell: (params) => (
@@ -166,17 +168,18 @@ export default function DynamicTables() {
       <Box
         sx={{
           height: 600,
-          width: '100%',
-          margin: '50px auto',
-          maxWidth: '1000px',
-          padding: '20px',
+          width: '1200px',
+          marginTop:"50px",
+          marginLeft:"-100px",
+          maxWidth: '1200px',
+          padding: '10px',
           backgroundColor: '#f4f6f8',
           borderRadius: '20px',
           boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center', mb: 3 }}>
-  {['Appel à proposition', 'Appel à encadrement', 'Affectation de projet', 'Rappels de soutenance'].map((item, index) => (
+  {['Appel à proposition', 'Appel à encadrement'].map((item, index) => (
     <Box
       key={index}
       onClick={() => setCurrentTable(`table${index + 1}`)}
@@ -214,15 +217,20 @@ export default function DynamicTables() {
           sx={{
             '& .MuiDataGrid-cell, .MuiDataGrid-columnHeader': {
               fontFamily: 'Roboto, sans-serif',
+              fontSize:'18px',
+
               border: '1px solid #ddd',
             },
             '& .MuiDataGrid-columnHeader': {
               backgroundColor: '#f4f4f4',
               fontWeight: 'bold',
+              fontSize:'25px',
+              fontFamily:'bold',
               color: '#333',
               borderBottom: '2px solid #ddd',
             },
           }}
+        
         />
       </Box>
 

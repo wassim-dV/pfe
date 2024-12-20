@@ -1,29 +1,31 @@
 
 import './App.css'
-import EmaliApp from './Email_Manager/EmailApp';
-import ProfilMain from './Profil/ProfilMain';
-import CompanyMain from './componets/CompanyDashbord/CompanyMain';
-import TeacherDashbord from './componets/TeacherDachbord/TeacherDashbord';
-import TeacherMain from './componets/TeacherDachbord/TeacherMain';
 
-import CVSM from './componets/ِCVS/CVSM';
+
+import CompanyDash from '../src/componets/CompanyDashbord/CompanyDash';
+import ProfilMain from './Profil/ProfilMain';
+import StudentDash from '../src/componets/StudentDashbord/StudentDash'
+import DhbordAdmin from './componets/tabel/DhbordAdmin';
+import DashbordTeacher from './componets/TeacherDachbord/DashbordTeacher';
+import CompanyMain from './componets/CompanyDashbord/CompanyMain/CompanyMain';
+import MainAdmin from './componets/tabel/StaticticPage/StatisticMain';
 
 
 function App() {
 
   return (
     <>
-           <CompanyMain/> 
+            {/* <StudentDash />  */}
+               <DhbordAdmin/> 
+
+            {/* <DashbordTeacher/>   */}
+                 
+            {/* <CompanyDash/> */}
 
 
-      {/* <TeacherMain/>  */}
-      {/* <TeacherDashbord/>  */}
 
-   {/* <EmaliApp /> */}
 
-       {/* < MainAdmin/> */}
-       {/* <CVSM /> */}
-              {/* <ProfilMain /> */}
+
 
 
 

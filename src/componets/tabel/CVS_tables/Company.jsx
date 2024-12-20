@@ -108,11 +108,11 @@ export default function Teacher() {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          height: 600,
+          height: 650,
           width: '100%',
           margin: '50px auto',
-          maxWidth: '1000px',
-          padding: '20px',
+          maxWidth: '1110px',
+          padding: '20px ',
           backgroundColor: '#f4f6f8',
           borderRadius: '20px',
           boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
@@ -167,8 +167,10 @@ export default function Teacher() {
               },
             },
             '& .MuiDataGrid-cell, .MuiDataGrid-columnHeader': {
-              fontFamily: 'Roboto, sans-serif',
               border: '1px solid #ddd',
+              fontSize:'17px',
+
+
             },
             '& .MuiDataGrid-columnHeader': {
               backgroundColor: '#f4f4f4',
