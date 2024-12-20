@@ -8,7 +8,6 @@ import StudentDash from '../src/componets/StudentDashbord/StudentDash'
 import DhbordAdmin from './componets/tabel/DhbordAdmin';
 import DashbordTeacher from './componets/TeacherDachbord/DashbordTeacher';
 import CompanyMain from './componets/CompanyDashbord/CompanyMain/CompanyMain';
-import MainAdmin from './componets/tabel/StaticticPage/StatisticMain';
 
 
 function App() {

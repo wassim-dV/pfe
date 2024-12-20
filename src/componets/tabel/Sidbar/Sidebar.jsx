@@ -551,7 +551,7 @@ const handleNavigation7 = () => {
           <HomeIcon />
         </ListItemIcon>
         <ListItemText
-          primary="Settings"
+          primary="Home"
           sx={{
             fontWeight: 600,
             color: "#1976d2",
