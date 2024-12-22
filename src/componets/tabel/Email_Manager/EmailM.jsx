@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import Swal from "sweetalert2";
+import SendIcon from '@mui/icons-material/Send';
+
+
 
 import {
   Box,
@@ -9,45 +11,60 @@ import {
   createTheme,
   IconButton,
   Dialog,
+  Alert,
+  SnackbarContent,
+  Snackbar,
   Grid,
   FormControlLabel, Radio, RadioGroup,
   DialogActions,
   DialogContent,
   DialogTitle,
   TextField,
+  Typography,
   Select,
   MenuItem,
   InputLabel,
+  DialogContentText,
   FormControl
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 // بيانات كل جدول
 const initialData = {
   table1: [
-    { id: 1, from: 'John', to: 'Teacher', spe_master: 'CS', date_creation: '2023-12-19', relance: 'Yes', action: 'Pending' },
-    { id: 2, from: 'Jane', to: 'Student', spe_master: 'IT', date_creation: '2023-08-14', relance: 'No', action: 'Completed' },
-    { id: 3, from: 'John', to: 'Teacher', spe_master: 'CS', date_creation: '2023-12-19', relance: 'Yes', action: 'Pending' },
-    { id: 4, from: 'Jane', to: 'Student', spe_master: 'IT', date_creation: '2023-08-14', relance: 'No', action: 'Completed' },
-    { id: 5, from: 'John', to: 'Teacher', spe_master: 'CS', date_creation: '2023-12-19', relance: 'Yes', action: 'Pending' },
-    { id: 6, from: 'Jane', to: 'Student', spe_master: 'IT', date_creation: '2023-08-14', relance: 'No', action: 'Completed' },
-    { id: 7, from: 'John', to: 'Teacher', spe_master: 'CS', date_creation: '2023-12-19', relance: 'Yes', action: 'Pending' },
-    { id: 8, from: 'Jane', to: 'Student', spe_master: 'IT', date_creation: '2023-08-14', relance: 'No', action: 'Completed' },
- 
+    { id: 1, From: 'John', To:"Teacher",  spe_master: 'RSD', Date_de_creatiocn: '30-20-2024',Relance:"Yes" },
+
+        { id: 2, From: 'John', To:"Student",  spe_master: 'SIC',  Date_de_creatiocn: '30-20-2024',Relance:"No" },
+    { id: 3, From: 'John',  To:"Student", spe_master: 'GL', Date_de_creatiocn: '30-20-2024' ,Relance:"Yes"},
+    { id: 4, From: 'John', To:"Teacher", spe_master: 'IA',  Date_de_creatiocn: '30-20-2024' ,Relance:"No" },
+    { id: 5, From: 'John', To:"Student", spe_master: 'GL', Date_de_creatiocn:'30-20-2024' ,Relance:"No" },
+    { id: 6, From: 'John', To:"Teacher",  spe_master: 'SIC',  Date_de_creatiocn: '30-20-2024',Relance:"Yes"},
+    { id: 7, From: 'John', To:"Student", spe_master: 'RSD', Date_de_creatiocn: '30-20-2024' ,Relance:"No"},
+    { id: 8, From: 'John', To:"Teacher",  spe_master: 'IA', Date_de_creatiocn: '30-20-2024',Relance:"Yes"},
+    
  
   ],
   table2: [
-    { id: 1, from: 'Alice', to: 'Student', spe_master: 'Math', date_creation: '2023-07-12', relance: 'Yes', action: 'In Progress' },
-    { id: 2, from: 'Bob', to: 'Teacher', spe_master: 'Physics', date_creation: '2023-05-20', relance: 'No', action: 'Pending' },
-    { id: 3, from: 'Alice', to: 'Student', spe_master: 'Math', date_creation: '2023-07-12', relance: 'Yes', action: 'In Progress' },
-    { id: 4, from: 'Bob', to: 'Teacher', spe_master: 'Physics', date_creation: '2023-05-20', relance: 'No', action: 'Pending' },
-    { id: 5, from: 'Alice', to: 'Student', spe_master: 'Math', date_creation: '2023-07-12', relance: 'Yes', action: 'In Progress' },
-    { id: 6, from: 'Bob', to: 'Teacher', spe_master: 'Physics', date_creation: '2023-05-20', relance: 'No', action: 'Pending' },
-    { id: 7, from: 'Alice', to: 'Student', spe_master: 'Math', date_creation: '2023-07-12', relance: 'Yes', action: 'In Progress' },
-    { id: 8, from: 'Bob', to: 'Teacher', spe_master: 'Physics', date_creation: '2023-05-20', relance: 'No', action: 'Pending' },
-  ],
-  
+    { id: "",From: 'John', To:"Teacher",  spe_master: 'RSD', Date_de_creatiocn: '30-20-2024' ,Relance:"No"},
+
+        { id: 2, From: 'John', To:"Teacher",  spe_master: 'SIC',  Date_de_creatiocn: '30-20-2024' ,Relance:"No"},
+    { id: 3, From: 'John', To:"Teacher",  spe_master: 'GL', Date_de_creatiocn: '30-20-2024',Relance:"Yes" },
+    { id: 4, From: ' John', To:"Teacher", spe_master: 'IA',  Date_de_creatiocn: '30-20-2024',Relance:"No"  },
+    { id: 5, From: ' John', To:"Teacher", spe_master: 'GL',  Date_de_creatiocn:'30-20-2024' ,Relance:"Yes" },
+    { id: 6, From: ' John', To:"Teacher",  spe_master: 'SIC', Date_de_creatiocn: '30-20-2024',Relance:"No"},
+    { id: 7, From: 'John', To:"Teacher", spe_master: 'RSD', Date_de_creatiocn: '30-20-2024' ,Relance:"Yes"},
+    { id: 8, From: 'John', To:"Teacher",  spe_master: 'IA',  Date_de_creatiocn: '30-20-2024',Relance:"No"},
+    
+],
+
+
+
+
+ 
 };
 
 const theme = createTheme({
@@ -56,7 +73,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#fff',
-          border: '1px solid #d0d0d0',
+          border: '4px solid #d0d0d0',
           borderRadius: '15px',
         },
       },
@@ -64,11 +81,86 @@ const theme = createTheme({
   },
 });
 
-export default function DynamicTables() {
+export default function EmailM() {
   const [data, setData] = useState(initialData);
   const [currentTable, setCurrentTable] = useState('table1');
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [openAddDialog, setOpenAddDialog] = useState(false);
+
+const [openDialog, setOpenDialog] = useState(false);
+const [rejectionReason, setRejectionReason] = useState('');
+const [showReasonInput, setShowReasonInput] = useState(false);
+
+
+
+
+
+
+
+
+
+
+
+  const [status, setStatus] = useState(null); // New state for status
+
+
+const handleIconClick = () => {
+  setOpenDialog(true); // فتح النافذة عند الضغط على الأيقونة
+};
+const handleDialogCheckoutClose = () => {
+  setOpenDialog(false); // إغلاق النافذة
+  setShowReasonInput(false); // إعادة ضبط حقل السبب
+  setRejectionReason(''); // مسح النص المكتوب
+};
+
+
+
+
+
+
+
+
+const handleReasonChange = (event) => {
+  setRejectionReason(event.target.value); // تحديث سبب الرفض
+};
+
+const [newRow, setNewRow] = useState({
+  id: '',
+  From: '',
+ 
+ PFEName: "",
+  technologies: "",
+  spe_master: '',
+
+  Date_de_creatiocn: '',
+});
+
+
+
+ 
+const handleAddSave = () => {
+  setData((prevData) => ({
+    ...prevData,
+    [currentTable]: [
+      ...(prevData[currentTable] || []),
+      { ...newRow, id: Date.now() },
+    ],
+  }));
+
+  // إغلاق الحوار وإعادة تعيين الحقول
+  setOpenAddDialog(false);
+  setNewRow({
+    id:"",
+    Title: "",
+    spe_master: "",
+    Type: "",
+    PFEName: "",
+    Date_de_creatiocn: "",
+    technologies: "",
+  });
+};
+
 
   const handleEdit = (id) => {
     const row = data[currentTable].find((row) => row.id === id);
@@ -80,6 +172,20 @@ export default function DynamicTables() {
     setOpenEditDialog(false);
     setSelectedRow(null);
   };
+  const handleDialogClose2 = () => {
+  setOpenEditDialog(false);
+};
+
+
+  const handleFieldChange2 = (field, value) => {
+  setSelectedRow((prevRow) => ({
+    ...prevRow,
+    [field]: value,
+  }));
+};
+
+
+
 
   const handleSave = () => {
     setData((prevData) => ({
@@ -91,12 +197,14 @@ export default function DynamicTables() {
     handleDialogClose();
   };
 
-  const handleFieldChange = (field, value) => {
-    setSelectedRow((prevRow) => ({
-      ...prevRow,
-      [field]: value,
-    }));
-  };
+ const handleFieldChange = (field, value) => {
+  setNewRow((prevRow) => ({
+    ...prevRow,
+    [field]: value,
+  }));
+};
+
+
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -127,58 +235,112 @@ export default function DynamicTables() {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 80, align: 'center', headerAlign: 'center',   headerClassName: 'header-bold', // نمط CSS مخصص
-    },
-    { field: 'from', headerName: 'From', width: 180, align: 'center', headerAlign: 'center' },
-    { field: 'to', headerName: 'To', width: 180, align: 'center', headerAlign: 'center' },
-    { field: 'spe_master', headerName: 'Spe Master', width: 210, align: 'center', headerAlign: 'center' },
-    { field: 'date_creation', headerName: 'Date Creation', width: 210, align: 'center', headerAlign: 'center' },
-    { field: 'relance', headerName: 'Relance', width: 190, align: 'center', headerAlign: 'center' },
-    {
 
-      
-      field: 'actions',
-      headerName: 'Actions',
-      width: 120,
-      align: 'center',
-      headerAlign: 'center',
-      renderCell: (params) => (
-        <Box sx={{ display: 'flex' }}>
-          <IconButton
-                       color='gray'
-            onClick={() => handleEdit(params.row.id)}
-          >
-            <EditIcon />
-          </IconButton>
-          <IconButton
-          
-            color="gray"
-            onClick={() => handleDelete(params.row.id)}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Box>
-      ),
-    },
+    { field: 'From', headerName: 'From', width: 210, align: 'center', headerAlign: 'center' },
+    { field: 'To', headerName: 'To', width: 210, align: 'center', headerAlign: 'center' },
+
+    { field: 'spe_master', headerName: 'Spe Master', width:210, align: 'center', headerAlign: 'center' },
+    { field: 'Date_de_creatiocn', headerName: 'Date De Creatiocn', width:210, align: 'center', headerAlign: 'center' },
+
+    { field: 'Relance', headerName: 'Relance', width:210, align: 'center', headerAlign: 'center' },
+
+    
+
+
+
+
   ];
+  
+
+  const enhancedColumns = currentTable === 'table1' 
+  ? [
+      ...columns,
+      
+  
+      {
+        field: 'actions',
+        headerName: 'Actions',
+        width: 130,
+        align: 'center',
+        headerAlign: 'center',
+        renderCell: (params) => (
+          <Box sx={{ display: 'flex' }}>
+            <IconButton
+              color="gray"
+              onClick={() => handleEdit(params.row.id)}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              color="gray"
+              onClick={() => handleDelete(params.row.id)}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+        ),
+      },
+    ]
+
+
+
+   
+    : currentTable === 'table2'
+    ? [
+        ...columns,
+
+       { field: 'actions',
+        headerName: 'Actions',
+        width: 130,
+        align: 'center',
+        headerAlign: 'center',
+        renderCell: (params) => (
+          <Box sx={{ display: 'flex' }}>
+            <IconButton
+              color="gray"
+              onClick={() => handleEdit(params.row.id)}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              color="gray"
+              onClick={() => handleDelete(params.row.id)}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+        ),
+      },
+    
+       
+      ]
+  
+
+
+
+  : columns;
+
+
+  
+
   
 
   return (
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          height: 600,
-          width: '1200px',
-          marginTop:"50px",
-          marginLeft:"-100px",
-          maxWidth: '1200px',
-          padding: '10px',
+          height: 620,
+          width: '1250px',
+          marginLeft:'-95px !important',
+          margin: '55px -110px',
+          maxWidth: '3002px',
+          padding: '20px',
           backgroundColor: '#f4f6f8',
           borderRadius: '20px',
           boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center', mb: 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center', mb: 2 }}>
   {['Appel à proposition', 'Appel à encadrement'].map((item, index) => (
     <Box
       key={index}
@@ -212,7 +374,7 @@ export default function DynamicTables() {
 
         <DataGrid
           rows={data[currentTable]}
-          columns={columns}
+          columns={enhancedColumns}
           pageSize={5}
           sx={{
             '& .MuiDataGrid-cell, .MuiDataGrid-columnHeader': {
@@ -230,43 +392,73 @@ export default function DynamicTables() {
               borderBottom: '2px solid #ddd',
             },
           }}
-        
         />
       </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+       (
+<Button
+  variant="contained"
+  color="primary"
+  onClick={() => setOpenAddDialog(true)}
+  sx={{
+    backgroundColor:"#fff",
+      color: "#64b5f6",
+      fontWeight:'bold',
+      border:"1px solid #64b5f6",
 
-      {/* نافذة التعديل */}
-      {selectedRow && (
-        <Dialog 
-  open={openEditDialog} 
-  onClose={handleDialogClose}
+
+    position: 'sticky',  // استخدام sticky بدلاً من fixed
+    top: '666px',    
+    width:'160px',
+    height:"40px",     // وضع الزر في مكان مناسب من الأعلى
+    left: '120px',         // وضع الزر في منتصف الصفحة أفقيًا
+    transform: 'translateX(-500%)', // ضمان مركزية الزر
+
+    zIndex: 1000,        // التأكد من أن الزر فوق العناصر الأخرى
+    textTransform: 'none',
+    borderRadius: '8px',
+  }}
+    startIcon={<SendIcon />} // إضافة رمز الإرسال
+
+>
+  Send an email
+</Button>
+
+)
+
+
+</Box>
+
+{/* نافذة الإضافة */}
+<Dialog
+  open={openAddDialog}
+  onClose={() => setOpenAddDialog(false)}
   PaperProps={{
     sx: { padding: 2, borderRadius: "12px", maxWidth: "600px" },
   }}
 >
-  <DialogTitle 
-    sx={{ 
-      fontSize: "1.5rem", 
-      fontWeight: "bold", 
-      color: "#1976d2", 
-      textAlign: "center" 
+  <DialogTitle
+    sx={{
+      width: "500px",
+      fontSize: "1.5rem",
+      fontWeight: "bold",
+      color: "#1976d2",
+      textAlign: "center",
     }}
   >
-    Edit Row
+    Add New Row
   </DialogTitle>
 
-  <DialogContent 
-    sx={{ 
-      display: "flex", 
-      flexDirection: "column", 
-      gap: 2 
-    }}
-  >
+  <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: "-10px" }}>
+      From
+    </Typography>
     <TextField
       margin="dense"
-      label="Email Title"
+      label="Project Title"
       fullWidth
-      value={selectedRow.from}
-      onChange={(e) => handleFieldChange('from', e.target.value)}
+      value={newRow.From  || "" }
+      onChange={(e) => handleFieldChange("From", e.target.value)}
       sx={{
         "& .MuiInputBase-root": {
           borderRadius: "8px",
@@ -274,106 +466,73 @@ export default function DynamicTables() {
       }}
     />
 
-    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Trager To</h3>
-    <Grid container spacing={2}>
-      <Grid item xs={6}>
-        <FormControl fullWidth margin="dense">
-          <InputLabel>To</InputLabel>
-          <Select
-            sx={{ borderRadius: "8px" }}
-            value={selectedRow.to}
-            onChange={(e) => handleFieldChange('to', e.target.value)}
-            label="To"
-          >
-            <MenuItem value="Doe">Doe</MenuItem>
-            <MenuItem value="Smith">Smith</MenuItem>
-            <MenuItem value="Brown">Brown</MenuItem>
-            <MenuItem value="Taylor">Taylor</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={6}>
-        <FormControl fullWidth margin="dense">
-          <InputLabel>Spe Master</InputLabel>
-          <Select
-            sx={{ borderRadius: "8px" }}
-            value={selectedRow.spe_master}
-            onChange={(e) => handleFieldChange('spe_master', e.target.value)}
-            label="Spe Master"
-          >
-            <MenuItem value="CS">CS</MenuItem>
-            <MenuItem value="IT">IT</MenuItem>
-            <MenuItem value="Math">Math</MenuItem>
-            <MenuItem value="Physics">Physics</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
-    </Grid>
-
-    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Deadline</h3>
-    <Grid container spacing={2}>
-      <Grid item xs={5}>
-        <FormControl fullWidth margin="dense">
-          <TextField type="date" sx={{ borderRadius: "8px" }} />
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={6}>
-        <FormControl fullWidth margin="dense">
-          <TextField type="date" sx={{ borderRadius: "8px" }} />
-        </FormControl>
-      </Grid>
-    </Grid>
-
-    <FormControl
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        marginBottom: "20px",
-      }}
-    >
-      <h3 style={{ marginLeft: "18px", color: "#1565c0" }}>Relance</h3>
-      <RadioGroup
-        value={selectedRow.relance}
-        onChange={(e) => handleFieldChange('relance', e.target.value)}
-        row
-        sx={{ alignItems: "center", marginLeft: "20px" }}
-      >
-        <FormControlLabel
-          value="Yes"
-          control={<Radio color="primary" />}
-          label="Yes"
-        />
-        <FormControlLabel
-          value="No"
-          control={<Radio color="secondary" />}
-          label="No"
-        />
-      </RadioGroup>
-    </FormControl>
-
-    {selectedRow.relance === 'Yes' && (
-      <TextField
-        sx={{ width: "100%" }}
-        label="Relance Date"
-        type="date"
-        fullWidth
-        InputLabelProps={{ shrink: true }}
-        value={selectedRow.date_creation}
-        onChange={(e) => handleFieldChange('date_creation', e.target.value)}
-      />
-    )}
-
-    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Description</h3>
+<Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: "-10px" }}>
+      To
+    </Typography>
     <TextField
       margin="dense"
-      label="Description"
-      type="text"
+      label="Intitulé du PFE"
       fullWidth
-      InputLabelProps={{ shrink: true }}
-      value={selectedRow.date_creation}
-      onChange={(e) => handleFieldChange('date_creation', e.target.value)}
+      value={newRow.To || ""}
+      onChange={(e) => handleFieldChange("To", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+
+    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: "-10px" }}>
+      Master's Specialization
+    </Typography>
+    <TextField
+      margin="dense"
+      label="Master's Specialization"
+      fullWidth
+      select
+      value={newRow.spe_master || ""}
+      onChange={(e) => handleFieldChange("spe_master", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    >
+      <MenuItem value="GL">GL</MenuItem>
+      <MenuItem value="IA">IA</MenuItem>
+      <MenuItem value="RSD">RSD</MenuItem>
+      <MenuItem value="SIC">SIC</MenuItem>
+    </TextField>
+
+    
+   
+
+    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: "-10px" }}>
+    Date_de_creatiocn
+    </Typography>
+    <TextField
+    type='date'
+      
+      
+      rows={4}
+      value={newRow.Date_de_creatiocn || ""}
+      onChange={(e) => handleFieldChange("Date_de_creatiocn", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+
+    <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: "-10px" }}>
+    Relance 
+    </Typography>
+    <TextField
+      margin="dense"
+      label="Relance"
+      fullWidth
+      value={newRow.Relance || ""}
+      onChange={(e) => handleFieldChange("Relance", e.target.value)}
       sx={{
         "& .MuiInputBase-root": {
           borderRadius: "8px",
@@ -384,7 +543,147 @@ export default function DynamicTables() {
 
   <DialogActions sx={{ justifyContent: "center", gap: 2 }}>
     <Button
-      onClick={handleDialogClose}
+      onClick={() => setOpenAddDialog(false)}
+      color="secondary"
+      variant="outlined"
+      sx={{
+        textTransform: "none",
+        borderRadius: "8px",
+      }}
+    >
+      Cancel
+    </Button>
+    <Button
+      onClick={handleAddSave}
+      color="primary"
+      variant="contained"
+      sx={{
+        textTransform: "none",
+        borderRadius: "8px",
+      }}
+    >
+      Save
+    </Button>
+  </DialogActions>
+</Dialog>
+
+
+
+
+     
+
+      {/* نافذة التعديل */}
+      {selectedRow && (
+       <Dialog
+  open={openEditDialog}
+  onClose={handleDialogClose2}
+  PaperProps={{
+    sx: { padding: 2, borderRadius: "12px", maxWidth: "900px" },
+  }}
+>
+  <DialogTitle
+    sx={{
+      width: "500px",
+      fontSize: "1.5rem",
+      fontWeight: "bold",
+      color: "#1976d2",
+      textAlign: "center",
+    }}
+  >
+    Edit Row
+  </DialogTitle>
+
+  <DialogContent
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      gap: 2,
+    }}
+  >
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>From</h3>
+    <TextField
+      margin="dense"
+      label="From"
+      fullWidth
+      value={selectedRow.From || ""}
+      onChange={(e) => handleFieldChange2("From", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+
+<h3 style={{ margin: "10px 0", color: "#1565c0" }}>To</h3>
+    <TextField
+      margin="dense"
+      label="To  "
+      fullWidth
+      value={selectedRow.To || ""}
+      onChange={(e) => handleFieldChange2("To", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+
+    
+
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>      Master's Specialization
+    </h3>
+    <Grid item xs={6}>
+      <FormControl fullWidth margin="dense">
+        <InputLabel>      Master's Specialization
+        </InputLabel>
+        <Select
+          sx={{ borderRadius: "8px" }}
+          value={selectedRow.spe_master || ""}
+          onChange={(e) => handleFieldChange2("spe_master", e.target.value)}
+          label="Spe Master"
+        >
+          <MenuItem value="GL">GL</MenuItem>
+          <MenuItem value="RSD">RSD</MenuItem>
+          <MenuItem value="IA">IA</MenuItem>
+          <MenuItem value="SIC">SIC</MenuItem>
+        </Select>
+      </FormControl>
+    </Grid>
+
+  
+
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Date de creatiocn</h3>
+    <TextField
+      margin="dense"
+     type='date'
+      rows={4}
+      value={selectedRow.Date_de_creatiocn || ""}
+      onChange={(e) => handleFieldChange2("Date_de_creatiocn", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+
+    <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Relance</h3>
+    <TextField
+      margin="dense"
+      label="Relance"
+      fullWidth
+      value={selectedRow.Relance || ""}
+      onChange={(e) => handleFieldChange2("Relance", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+  </DialogContent>
+
+  <DialogActions sx={{ justifyContent: "center", gap: 2 }}>
+    <Button
+      onClick={handleDialogClose2}
       color="secondary"
       variant="outlined"
       sx={{
@@ -407,6 +706,10 @@ export default function DynamicTables() {
     </Button>
   </DialogActions>
 </Dialog>
+
+
+
+
 
       )}
     </ThemeProvider>
