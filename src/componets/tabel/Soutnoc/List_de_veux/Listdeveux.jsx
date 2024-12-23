@@ -108,7 +108,7 @@ const navigate = useNavigate();
 
 const handleEdi = (id) => {
   // يمكنك تعديل مسار الصفحة على حسب احتياجاتك
-  navigate('/veiw');
+  navigate('/add');
 };
 
 
@@ -420,7 +420,7 @@ const handleAddSave = () => {
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center', mb: 2 }}>
-  {['Appel à proposition'].map((item, index) => (
+  {['jury wish List Modification'].map((item, index) => (
     <Box
       key={index}
       onClick={() => setCurrentTable(`table${index + 1}`)}
@@ -600,6 +600,22 @@ Download summary sheet
     <TextField
       margin="dense"
       label="Enter Baram"
+      type="text"
+      fullWidth
+      onChange={(e) => handleFieldChange("number", e.target.value)}
+      sx={{
+        "& .MuiInputBase-root": {
+          borderRadius: "8px",
+        },
+      }}
+    />
+
+<Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: "-10px" }}>
+      Coefficient
+    </Typography>
+    <TextField
+      margin="dense"
+      label="Enter Coefficient"
       type="number"
       fullWidth
       onChange={(e) => handleFieldChange("number", e.target.value)}
@@ -719,20 +735,9 @@ Download summary sheet
      
          {/* إضافة موضوع جديد */}
          <h3 style={{ margin: "10px 0", color: "#1565c0" }}>Add New Theme</h3>
-         <TextField
-           margin="dense"
-           label="Theme Title"
-           fullWidth
-           value={newThemeTitle}
-           onChange={(e) => setNewThemeTitle(e.target.value)}
-           sx={{
-             "& .MuiInputBase-root": {
-               borderRadius: "8px",
-             },
-           }}
-         />
+         
          <Button
-           onClick={handleAddTheme}
+           onClick={handleEdi}
            color="primary"
            variant="contained"
            sx={{

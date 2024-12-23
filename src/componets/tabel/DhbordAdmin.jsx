@@ -36,6 +36,7 @@ function DhbordAdmin() {
     <Route path="/profil" element={<ProfilMain />} exact strict/>
     <Route path="/Theme" element={<ThemeDispoMain />} exact strict/>
 
+    <Route path="/add" element={<ThemeDispoMain />} exact strict/>
 
     <Route path="/settings" element={<ProfilMain />} exact strict/>
   </Routes>
