@@ -71,8 +71,8 @@ const ProgressStudent = () => {
   return (
     <Box
       sx={{
-        marginRight: "350px",
-        marginTop: "50px",
+        marginRight:"100px",
+        marginLeft:"-150px",
         p: 4,
         bgcolor: "#f3f4f6",
         minHeight: "100vh",
@@ -84,8 +84,8 @@ const ProgressStudent = () => {
       <Paper
         elevation={4}
         sx={{
-          width: "1000px",
-          maxWidth: "1200px",
+          width: "1300px",
+          maxWidth: "1300px",
           p: 4,
           bgcolor: "white",
           borderRadius: 3,
@@ -204,7 +204,7 @@ const ProgressStudent = () => {
       >
         
       </Box>
-      Resume
+      Summary
     </Typography>
     <Typography
       variant="body1"
@@ -433,6 +433,30 @@ const ProgressStudent = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      <Button
+  onClick={() => setOpen(false)}
+  sx={{
+    fontSize: "1.25rem", // تكبير النص
+    color: "#ffffff", // لون النص أبيض
+    backgroundColor: "#6c757d", // لون رمادي داكن
+    padding: "10px 20px", // مساحة داخلية للزر
+    borderRadius: "8px", // زوايا مستديرة
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // ظل خفيف
+    transition: "all 0.3s ease-in-out", // تأثيرات انتقال ناعمة
+    "&:hover": {
+      bgcolor: "#495057", // خلفية أغمق عند التمرير
+      transform: "scale(1.05)", // تكبير بسيط عند التمرير
+      boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.15)", // زيادة الظل عند التمرير
+    },
+    "&:active": {
+      transform: "scale(0.98)", // تصغير بسيط عند النقر
+      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)", // تقليل الظل عند النقر
+    },
+  }}
+>
+  Confirm
+</Button>
+
     </Box>
   );
 };

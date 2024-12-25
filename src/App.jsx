@@ -14,8 +14,8 @@ function App() {
 
   return (
     <>
-            {/* <StudentDash />  */}
-<DhbordAdmin />
+            <StudentDash /> 
+{/* <DhbordAdmin /> */}
             {/* <DashbordTeacher/>   */}
                  
             {/* <CompanyDash/> */}

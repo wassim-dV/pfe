@@ -4,6 +4,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import AddIcon from '@mui/icons-material/Add';
 import Swal from "sweetalert2";
 
+import { Link as RouterLink , useNavigate } from 'react-router-dom'; // إعادة تسمية Link الخاص بـ React Router
 
 import { GrView } from "react-icons/gr";
 
@@ -110,6 +111,7 @@ export default function TeacherDashbord() {
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
   const [openAddDialog, setOpenAddDialog] = useState(false);
+ const navigate = useNavigate();
 
 const [openDialog, setOpenDialog] = useState(false);
 const [rejectionReason, setRejectionReason] = useState('');
@@ -188,7 +190,7 @@ const [newRow, setNewRow] = useState({
 
 const handleEdi = (id) => {
   // يمكنك تعديل مسار الصفحة على حسب احتياجاتك
-  navigate('/veiw');
+  navigate('/Veiw');
 };
 
   const handleAddSave = () => {
