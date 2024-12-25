@@ -9,9 +9,9 @@ import Statistic from './StatisticPage'
 export default function MainAdmin() {
   return (
     <>
-    <div style={{display: "flex",
-    marginLeft:"-100px",
-    marginRight:"10px",
+    <div style={{
+    marginLeft:"30px",
+    marginRight:"100px",
   height: "100vh",
   fontfamily: "Arial, sans-serif"}}>
     <Sidebar   />;  

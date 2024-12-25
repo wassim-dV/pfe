@@ -37,17 +37,16 @@ import { useNavigate } from "react-router-dom";
 // بيانات كل جدول
 const initialData = {
   table1: [
-    { id: 1, Titel: 'AI in Cybersecurity',  spe_master: 'RSD', Propose: 'Dr.mohammed Karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
+    { id: 1, Titel: 'AI in Cybersecurity',  spe_master: 'RSD', Propose: 'Mohammed karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
 
-    { id: 2, Titel: 'AI in Cybersecurity',  spe_master: 'SIC', Propose: 'Dr.mohammed Karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
-{ id: 3, Titel: 'AI in Cybersecurity',  spe_master: 'GL', Propose: 'Dr.mohammed Karim',Type:"Innovative", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
-{ id: 4, Titel: 'AI in Cybersecurity', spe_master: 'IA', Propose: 'Dr.mohammed Karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur'  },
-{ id: 5, Titel: 'AI in Cybersecurity', spe_master: 'GL', Propose: 'Dr.mohammed Karim',Type:"Innovative", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur',  },
-{ id: 6, Titel: 'AI in Cybersecurity',  spe_master: 'SIC', Propose: 'Dr.mohammed Karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur'},
-{ id: 7, Titel: 'AI in Cybersecurity', spe_master: 'RSD', Propose: 'Dr.mohammed Karim',Type:"Innovative", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
-{ id: 8, Titel: 'AI in Cybersecurity',  spe_master: 'IA', Propose: 'Dr.mohammed Karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur'},
-
-
+    { id: 2, Titel: 'AI in Cybersecurity',  spe_master: 'SIC', Propose: 'Mohammed karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
+{ id: 3, Titel: 'AI in Cybersecurity',  spe_master: 'GL', Propose: 'Mohammed karim',Type:"Innovative", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
+{ id: 4, Titel: 'AI in Cybersecurity', spe_master: 'IA', Propose: 'Mohammed karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur'  },
+{ id: 5, Titel: 'AI in Cybersecurity', spe_master: 'GL', Propose: 'Mohammed karim',Type:"Innovative", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur',  },
+{ id: 6, Titel: 'AI in Cybersecurity',  spe_master: 'SIC', Propose: 'Mohammed karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur'},
+{ id: 7, Titel: 'AI in Cybersecurity', spe_master: 'RSD', Propose: 'Mohammed karim',Type:"Innovative", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur' },
+{ id: 8, Titel: 'AI in Cybersecurity',  spe_master: 'IA', Propose: 'Mohammed karim',Type:"classic", Summary: 'Artificial Intelligence (AI) is transforming cybersecurity by enhancing threat detection, incident response, and risk management. AI systems can analyze vast amounts of data in real time, identify patterns, and predict potential security breaches before they occur'},
+ 
  
   ],
   table2: [
@@ -213,13 +212,12 @@ const handleAddSave = () => {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 59, align: 'center', headerAlign: 'center',   headerClassName: 'header-bold', // نمط CSS مخصص
-    },
-    { field: 'Titel', headerName: 'Titel', width: 160, align: 'center', headerAlign: 'center' },
+   
+    { field: 'Titel', headerName: 'Titel', width: 180, align: 'center', headerAlign: 'center' },
     { field: 'Propose', headerName: 'Propose', width: 160, align: 'center', headerAlign: 'center' },
-    { field: 'Type', headerName: 'Type', width: 150, align: 'center', headerAlign: 'center' },
+    { field: 'Type', headerName: 'Type', width: 160, align: 'center', headerAlign: 'center' },
     { field: 'spe_master', headerName: 'Spe Master', width:160, align: 'center', headerAlign: 'center' },
-    { field: 'Summary', headerName: 'Summary', width:394, align: 'center', headerAlign: 'center' },
+    { field: 'Summary', headerName: 'Summary', width:430, align: 'center', headerAlign: 'center' },
 
 
     
@@ -487,10 +485,10 @@ const handleAddSave = () => {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          height: 620,
+          height: 600,
           width: '1250px',
           marginLeft:'-95px !important',
-          margin: '55px -110px',
+          margin: '-2px -110px',
           maxWidth: '3002px',
           padding: '20px',
           backgroundColor: '#f4f6f8',
@@ -566,11 +564,11 @@ const handleAddSave = () => {
 
 
     position: 'sticky',  // استخدام sticky بدلاً من fixed
-    top: '675px',    
+    marginTop:"-28px",   
     width:'220px',
     height:"40px",     // وضع الزر في مكان مناسب من الأعلى
     left: '120px',         // وضع الزر في منتصف الصفحة أفقيًا
-    transform: 'translateX(-500%)', // ضمان مركزية الزر
+    transform: 'translateX(-400%)', // ضمان مركزية الزر
 
     zIndex: 1000,        // التأكد من أن الزر فوق العناصر الأخرى
     textTransform: 'none',
@@ -586,8 +584,6 @@ Download the summary file
 </Box>
 
 {/* نافذة الإضافة */}
-
-
 
 
      

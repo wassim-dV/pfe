@@ -81,8 +81,11 @@ const Statistic = () => {
       animate="visible"
       className="dashboard-container"
       style={{
+        marginLeft:"-20px",
         fontFamily: "Arial, sans-serif",
         padding: "20px",
+        width:"1260px",
+        maxWidth:"1260px",
         backgroundColor: "#ecf0f1",
         borderRadius: "12px",
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",

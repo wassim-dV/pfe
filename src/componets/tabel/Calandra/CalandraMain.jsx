@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../../Sidbar/Sidebar';
+import Sidebar from '../Sidbar/Sidebar';
 
 import Calandra from './Calandra';
 
@@ -8,10 +8,9 @@ import Calandra from './Calandra';
 export default function CalandraMain() {
   return (
     <>
-    <div style={{display: "flex",
+    <div style={{
   height: "100vh",
-  marginLeft:"-142px",
-  marginRight:"-138px",
+  
 
   fontfamily: "Arial, sans-serif"}}>
     <Sidebar   />;  

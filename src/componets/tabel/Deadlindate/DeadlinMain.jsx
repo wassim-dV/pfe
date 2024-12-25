@@ -8,7 +8,7 @@ import Deadlinedate from './Deadlinepage'
 export default function DeadlinMani() {
   return (
     <>
-    <div style={{display: "flex",
+    <div style={{
   height: "100vh",
   marginLeft:"-142px",
   marginRight:"-138px",

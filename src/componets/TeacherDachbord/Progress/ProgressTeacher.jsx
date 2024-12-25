@@ -68,10 +68,9 @@ const ProgressTeacher = () => {
     <Box
       sx={{
         marginRight:"100px",
-        marginLeft:"-150px",
-     
+        marginLeft:"140px",
 
-        marginTop:"-15px",
+        marginTop:"-10px",
         p: 4,
         bgcolor: "#f3f4f6",
         minHeight: "100vh",

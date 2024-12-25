@@ -72,9 +72,10 @@ const ProgressStudent = () => {
     <Box
       sx={{
         marginRight:"100px",
-        marginLeft:"-150px",
+        marginLeft:"140px",
         p: 4,
         bgcolor: "#f3f4f6",
+        marginTop:"-10px",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",

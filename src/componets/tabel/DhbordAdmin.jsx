@@ -10,7 +10,7 @@ import StatisticMain from './StaticticPage/StatisticMain';
 import SoutnoceMain from './Projecte/ProjectMain';
 import ThemeDispoMain from './Projecte/Theme_dispoMain';
 import ListMain from './Soutnoc/List_de_veux/ListMain'
-import CalandraMain from './Soutnoc/Calandra/CalandraMain';
+import CalandraMain from './Calandra/CalandraMain';
 
 
 function DhbordAdmin() {

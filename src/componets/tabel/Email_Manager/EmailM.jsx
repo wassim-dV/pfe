@@ -329,10 +329,10 @@ const handleAddSave = () => {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          height: 620,
+          height: 580,
           width: '1250px',
           marginLeft:'-95px !important',
-          margin: '55px -110px',
+          margin: '40px -110px',
           maxWidth: '3002px',
           padding: '20px',
           backgroundColor: '#f4f6f8',
@@ -408,12 +408,11 @@ const handleAddSave = () => {
 
 
     position: 'sticky',  // استخدام sticky بدلاً من fixed
-    top: '666px',    
     width:'160px',
     height:"40px",     // وضع الزر في مكان مناسب من الأعلى
     left: '120px',         // وضع الزر في منتصف الصفحة أفقيًا
     transform: 'translateX(-500%)', // ضمان مركزية الزر
-
+      marginTop:"-74px",
     zIndex: 1000,        // التأكد من أن الزر فوق العناصر الأخرى
     textTransform: 'none',
     borderRadius: '8px',

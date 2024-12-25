@@ -8,8 +8,7 @@ import SidebarStudent from '../Sidbar/SidebarStudent';
 
 export default function StudentMain() {
   return (
-    <div style={{display: "flex",
-        margin: "-10px -20px",
+    <div style={{
         height: "100vh",
         fontfamily: "Arial, sans-serif"}}>
           <SidebarStudent  />

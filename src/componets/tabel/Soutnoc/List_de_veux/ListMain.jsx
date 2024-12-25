@@ -8,10 +8,9 @@ import Listdeveux from './Listdeveux';
 export default function ListMain() {
   return (
     <>
-    <div style={{display: "flex",
+    <div style={{
   height: "100vh",
-  marginLeft:"-142px",
-  marginRight:"-138px",
+
 
   fontfamily: "Arial, sans-serif"}}>
     <Sidebar   />;  
