@@ -1150,8 +1150,8 @@ const handleEdi = (id) => {
     borderRadius: "50px",
     padding: "10px 10px",
     height:'50px',
-    marginTop:"660px",
-    marginLeft:"65px",
+    marginTop:"-120px",
+    marginRight:"-1290px",
 
     fontSize: "1.3rem",
     fontWeight: "bold",
